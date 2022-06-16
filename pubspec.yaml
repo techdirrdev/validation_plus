@@ -1,5 +1,5 @@
 name: validation_plus
-description: Validation like mobile, email, input, etc.
+description: Validation like email address, mobile number, input formatter, etc.
 repository: https://github.com/techdirrdev/validation_plus.git
 version: 1.1.0
 
