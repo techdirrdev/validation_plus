@@ -1,3 +1,7 @@
+## 1.3.0
+
+* Password validation.
+
 ## 1.2.0
 
 * Password validation.

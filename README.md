@@ -57,3 +57,22 @@ TextField(
   inputFormatters: [Validate.decimalValueFormatter(decimalPlaceValue: 3)]
 )
 ```
+
+* Password validation
+```dart
+TextFormField(
+  controller: _conPassword,
+  decoration: const InputDecoration(
+  labelText: "Password",
+  hintText: "Password"),
+  validator: (value) {
+    if (value == null || value.isEmpty || !Validate.isValidPassword(value)) {
+      return "* Min 6 characters and Max 12 characters\n* At least one uppercase character\n* At least one lowercase character\n* At least one number\n* At least one special character [@#\u{0024}!%?]";
+    }
+    return null;
+  },
+  onChanged: (value) {
+    _submit();
+  },
+)
+```
