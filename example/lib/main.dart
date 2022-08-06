@@ -14,6 +14,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _conPassword = TextEditingController();
+
+  void _submit() {
+    final isValid = _formKey.currentState?.validate();
+    if (!isValid!) {
+      return;
+    }
+    _formKey.currentState?.save();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,64 +33,90 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              children: [
-                TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    labelText: "Email",
-                    hintText: "Email",
-                  ),
-                  onChanged: (value) {
-                    if (Validate.isValidEmail(value)) {
-                      log("Email valid");
-                    } else {
-                      log("Email not valid");
-                    }
-                  },
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        labelText: "Email",
+                        hintText: "Email",
+                      ),
+                      onChanged: (value) {
+                        if (Validate.isValidEmail(value)) {
+                          log("Email valid");
+                        } else {
+                          log("Email not valid");
+                        }
+                      },
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        labelText: "Mobile",
+                        hintText: "Mobile",
+                      ),
+                      onChanged: (value) {
+                        if (Validate.isValidMobile(value)) {
+                          log("Mobile valid");
+                        } else {
+                          log("Mobile not valid");
+                        }
+                      },
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [Validate.intValueFormatter()],
+                        decoration: const InputDecoration(
+                          labelText: "Only int",
+                          hintText: "Only int",
+                        )),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          Validate.decimalValueFormatter(decimalPlaceValue: 3)
+                        ],
+                        decoration: const InputDecoration(
+                          labelText: "Only double",
+                          hintText: "Only double",
+                        )),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TextFormField(
+                      controller: _conPassword,
+                      decoration: const InputDecoration(
+                        labelText: "Password",
+                        hintText: "Password",
+                      ),
+                      validator: (value) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            !Validate.isValidPassword(value)) {
+                          return "password";
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        _submit();
+                      },
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextField(
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    labelText: "Mobile",
-                    hintText: "Mobile",
-                  ),
-                  onChanged: (value) {
-                    if (Validate.isValidMobile(value)) {
-                      log("Mobile valid");
-                    } else {
-                      log("Mobile not valid");
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextField(
-                    keyboardType: TextInputType.number,
-                    inputFormatters: [Validate.intValueFormatter()],
-                    decoration: const InputDecoration(
-                      labelText: "Only int",
-                      hintText: "Only int",
-                    )),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextField(
-                    keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      Validate.decimalValueFormatter(decimalPlaceValue: 3)
-                    ],
-                    decoration: const InputDecoration(
-                      labelText: "Only double",
-                      hintText: "Only double",
-                    )),
-              ],
+              ),
             ),
           ),
         ),

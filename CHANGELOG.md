@@ -1,6 +1,6 @@
 ## 1.2.0
 
-* Validation like email address, mobile number, input formatter, etc.
+* Password validation.
 
 ## 1.1.0
 
