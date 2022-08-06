@@ -19,6 +19,7 @@ class Validate {
   /// Min 6 and Max 12 characters
   /// At least one uppercase character
   /// At least one lowercase character
+  /// At least one number
   /// At least one special character [@#$!%?]
   static bool isValidPassword(String password) {
     return RegExp(
