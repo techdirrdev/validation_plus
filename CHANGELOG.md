@@ -1,6 +1,6 @@
 ## 1.3.0
 
-* Password validation.
+* Username validation.
 
 ## 1.2.0
 

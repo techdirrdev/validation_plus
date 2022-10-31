@@ -14,6 +14,14 @@ class Validate {
     return RegExp(r'^([6-9]{1})([0-9]{9})$').hasMatch(mobile);
   }
 
+  /// validation username
+  /// Min 6 and Max 18 characters
+  /// Only support lowercase or uppercase or number character
+  /// Only support special character [._]
+  static bool isValidUsername(String username) {
+    return RegExp(r'^[a-zA-Z0-9._]{6,18}$').hasMatch(username);
+  }
+
   /// validation password
   /// like password pattern
   /// Min 6 and Max 12 characters

@@ -37,9 +37,29 @@ Please follow this [example](https://github.com/techdirrdev/validation_plus/tree
 Validate.isValidEmail(emailAddress);
 ```
 
-* Mobile number validation (Only Indian pattern and 10 digits mobile number accepted)
+* Mobile number validation
 ```dart
+/// validation mobile number (Only Indian pattern and 10 digits mobile number accepted)
 Validate.isValidMobile(mobileNumber);
+```
+
+* Username validation
+```dart
+/// Min 6 and Max 18 characters
+/// Only support lowercase or uppercase or number character
+/// Only support special character [._]
+Validate.isValidUsername(username);
+```
+
+* Password validation
+```dart
+/// like password pattern
+/// Min 6 and Max 12 characters
+/// At least one uppercase character
+/// At least one lowercase character
+/// At least one number
+/// At least one special character [@#$!%?]
+Validate.isValidPassword(password)
 ```
 
 * Input int value validation
@@ -55,24 +75,5 @@ TextField(
 TextField(
   keyboardType: TextInputType.number,
   inputFormatters: [Validate.decimalValueFormatter(decimalPlaceValue: 3)]
-)
-```
-
-* Password validation
-```dart
-TextFormField(
-  controller: _conPassword,
-  decoration: const InputDecoration(
-  labelText: "Password",
-  hintText: "Password"),
-  validator: (value) {
-    if (value == null || value.isEmpty || !Validate.isValidPassword(value)) {
-      return "* Min 6 characters and Max 12 characters\n* At least one uppercase character\n* At least one lowercase character\n* At least one number\n* At least one special character [@#\u{0024}!%?]";
-    }
-    return null;
-  },
-  onChanged: (value) {
-    _submit();
-  },
 )
 ```

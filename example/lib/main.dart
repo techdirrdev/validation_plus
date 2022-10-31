@@ -114,6 +114,22 @@ class _MyAppState extends State<MyApp> {
                         _submit();
                       },
                     ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      decoration: const InputDecoration(
+                        labelText: "Username",
+                        hintText: "Username",
+                      ),
+                      onChanged: (value) {
+                        if (Validate.isValidUsername(value)) {
+                          log("Username valid");
+                        } else {
+                          log("Username not valid");
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),
