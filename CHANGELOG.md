@@ -1,3 +1,7 @@
+## 1.4.0
+
+* Username validation.
+
 ## 1.3.0
 
 * Username validation.
