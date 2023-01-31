@@ -24,7 +24,7 @@ class Validate {
 
   /// validation password
   /// like password pattern
-  /// Min 6 and Max 12 characters
+  /// Min 8 characters
   /// At least one uppercase character
   /// At least one lowercase character
   /// At least one number
