@@ -28,10 +28,10 @@ class Validate {
   /// At least one uppercase character
   /// At least one lowercase character
   /// At least one number
-  /// At least one special character [@#$!%?]
+  /// At least one special character [@#$!+%?]
   static bool isValidPassword(String password) {
     return RegExp(
-            r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%?])[A-Za-z\d@#$!%?]{6,12}$')
+            r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!+%?])[A-Za-z\d@#$!+%?]{8,}$')
         .hasMatch(password);
   }
 
